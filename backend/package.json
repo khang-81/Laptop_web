@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for Laptop E-commerce Website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mssql": "^9.1.1",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.32.1",
+    "tedious": "^18.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
