@@ -14,7 +14,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Danh mục</h4>
             <ul className="space-y-2">
-              <li><Link to="/category/1" className="text-gray-400 hover:text-white">Máy tính xách tay</Link></li>
+              <li><Link to="/category/1" className="text-gray-400 hover:text-white">Macbook</Link></li>
               <li><Link to="/category/2" className="text-gray-400 hover:text-white">Laptop Gaming</Link></li>
               <li><Link to="/category/3" className="text-gray-400 hover:text-white">Laptop Văn phòng</Link></li>
               <li><Link to="/category/4" className="text-gray-400 hover:text-white">Laptop Lập trình</Link></li>
@@ -34,16 +34,16 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Liên hệ</h4>
             <address className="text-gray-400 not-italic">
-              <p>123 Đường ABC, Quận 1</p>
-              <p>TP. Hồ Chí Minh</p>
-              <p>Email: contact@laptopstore.com</p>
-              <p>Điện thoại: 0123 456 789</p>
+              <p>175 Tây Sơn, Đống Đa</p>
+              <p>TP. Hà Nội</p>
+              <p>Email: laptopstore@gmail.com</p>
+              <p>Điện thoại: 032 924 8087</p>
             </address>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-          <p>© 2023 Laptop Store. All rights reserved.</p>
+          <p>© 2025 Laptop Store. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -10,7 +10,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import { CartProvider } from './context/CartContext';
-
+import Introduce from './pages/Introduce';
+import Promotions from './pages/Promotions';
+import News from './pages/News';
 function App() {
   return (
     <CartProvider>
@@ -26,6 +28,9 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/introduce" element={<Introduce />} />
+              <Route path="/promotions" element={<Promotions />} />
+              <Route path="/news" element={<News />} />
             </Routes>
           </main>
           <Footer />

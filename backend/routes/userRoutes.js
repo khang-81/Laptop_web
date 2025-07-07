@@ -4,8 +4,9 @@ const userController = require('../controllers/userController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 // Protected routes
-router.get('/profile', authMiddleware.authenticate, userController.getUserProfile);
-router.put('/profile', authMiddleware.authenticate, userController.updateUserProfile);
-router.put('/password', authMiddleware.authenticate, userController.changePassword);
+router.get('/', authMiddleware.authenticate, authMiddleware.adminOnly, userController.getAllUsers);
+router.get('/:id', authMiddleware.authenticate, userController.getUserById);
+router.put('/:id', authMiddleware.authenticate, userController.updateUser);
+router.delete('/:id', authMiddleware.authenticate, authMiddleware.adminOnly, userController.deleteUser);
 
 module.exports = router;

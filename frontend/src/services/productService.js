@@ -4,7 +4,7 @@ const API_URL = 'http://localhost:5000/api/products';
 
 const productService = {
   getFeaturedProducts: async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`${API_URL}/featured`);
     return response.data;
   },
   
@@ -20,6 +20,10 @@ const productService = {
   
   searchProducts: async (query) => {
     const response = await axios.get(`${API_URL}/search?query=${query}`);
+    return response.data;
+  },
+  getCategories: async () => {
+    const response = await axios.get('http://localhost:5000/api/categories');
     return response.data;
   }
 };
