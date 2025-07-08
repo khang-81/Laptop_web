@@ -1,3 +1,4 @@
+// src/components/FeaturedProducts.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import productService from '../services/productService';
@@ -13,7 +14,7 @@ export default function FeaturedProducts() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const data = await productService.getFeaturedProducts();
+        const data = await productService.getFeaturedProducts();  // Lấy dữ liệu sản phẩm nổi bật
         setProducts(data);
       } catch (err) {
         setError(err.message || 'Unknown error');

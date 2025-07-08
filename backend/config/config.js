@@ -9,7 +9,7 @@ module.exports = {
     logging: false         // Tắt log query (tùy chọn)
   },
   jwt: {
-    secret: 'your_jwt_secret',
-    expiresIn: '30d'
+    secret: '260704',
+    expiresIn: '24h'
   }
 };

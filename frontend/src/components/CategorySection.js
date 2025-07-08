@@ -1,6 +1,7 @@
+// src/components/CategorySection.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import productService from '../services/productService';
+import productService from '../services/productService';  // Đảm bảo productService đã được cấu hình
 import LoadingSpinner from './LoadingSpinner';
 
 export default function CategorySection() {
@@ -11,7 +12,7 @@ export default function CategorySection() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const data = await productService.getCategories();
+        const data = await productService.getCategories();  // Lấy dữ liệu từ service
         setCategories(data);
       } catch (err) {
         setError(err.message || 'Unknown error');
@@ -48,4 +49,3 @@ export default function CategorySection() {
     </section>
   );
 }
-

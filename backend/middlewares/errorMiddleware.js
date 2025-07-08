@@ -1,18 +1,18 @@
+// middlewares/errorMiddleware.js
+
+// Middleware xử lý lỗi 404 (Not Found)
 exports.notFound = (req, res, next) => {
-  res.status(404).json({
-    success: false,
-    error: 'Endpoint not found'
-  });
+  const error = new Error('Not Found');
+  error.status = 404;
+  next(error);
 };
 
+// Middleware xử lý lỗi chung
 exports.errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
-  
-  const statusCode = err.statusCode || 500;
+  const statusCode = err.status || 500;
   const message = err.message || 'Internal Server Error';
-  
   res.status(statusCode).json({
-    success: false,
-    error: message
+    message: message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : null  // Chỉ hiển thị stack trace khi ở môi trường phát triển
   });
 };

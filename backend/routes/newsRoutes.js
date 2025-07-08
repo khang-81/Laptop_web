@@ -1,16 +1,10 @@
+// routes/newsRoutes.js
 const express = require('express');
 const router = express.Router();
-const newsController = require('../controllers/newsController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const newsController = require('../controllers/newsController');  // Kiểm tra import đúng
 
 // Public routes
-router.get('/', newsController.getAllNews);
-router.get('/:id', newsController.getNewsById);
-router.patch('/:id/views', newsController.incrementViews);
-
-// Protected routes (Admin only)
-router.post('/', authMiddleware.authenticate, authMiddleware.adminOnly, newsController.createNews);
-router.put('/:id', authMiddleware.authenticate, authMiddleware.adminOnly, newsController.updateNews);
-router.delete('/:id', authMiddleware.authenticate, authMiddleware.adminOnly, newsController.deleteNews);
+router.get('/', newsController.getAllNews);  // Đảm bảo rằng `getAllNews` đã được định nghĩa trong controller
+router.get('/:id', newsController.getNewsById);  // Đảm bảo rằng `getNewsById` đã được định nghĩa trong controller
 
 module.exports = router;

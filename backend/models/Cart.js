@@ -1,5 +1,7 @@
+// backend/models/Cart.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Product = require('./Product');
 
 const Cart = sequelize.define('Cart', {
   id: {
@@ -21,7 +23,12 @@ const Cart = sequelize.define('Cart', {
   }
 }, {
   tableName: 'carts',
-  timestamps: true
+  timestamps: true,                // bật timestamp
+  createdAt: 'created_at',         // map createdAt → created_at
+  updatedAt: false                 // tắt updatedAt (bạn không có cột updated_at)
 });
+
+// liên kết tới Product nếu cần
+Cart.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
 
 module.exports = Cart;

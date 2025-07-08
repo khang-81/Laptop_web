@@ -1,3 +1,4 @@
+// controllers/cartController.js
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 
@@ -65,6 +66,42 @@ exports.removeFromCart = async (req, res) => {
       return res.json({ message: 'Cart item removed' });
     }
     res.status(404).json({ message: 'Cart item not found' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Cập nhật số lượng sản phẩm trong giỏ hàng
+exports.updateCartItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { quantity } = req.body;
+
+    const cartItem = await Cart.findOne({
+      where: { id, user_id: req.user.id }
+    });
+
+    if (!cartItem) {
+      return res.status(404).json({ message: 'Cart item not found' });
+    }
+
+    // Cập nhật số lượng
+    cartItem.quantity = quantity;
+    await cartItem.save();
+
+    res.json(cartItem);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Xóa tất cả sản phẩm khỏi giỏ hàng
+exports.clearCart = async (req, res) => {
+  try {
+    await Cart.destroy({
+      where: { user_id: req.user.id }
+    });
+    res.json({ message: 'Cart cleared' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -1,3 +1,4 @@
+// models/Order.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
@@ -25,5 +26,13 @@ const Order = sequelize.define('Order', {
   tableName: 'orders',
   timestamps: false
 });
+
+// Đảm bảo các mối quan hệ (relationship) được thiết lập chính xác
+Order.associate = (models) => {
+  Order.hasMany(models.OrderItem, {
+    foreignKey: 'order_id',
+    as: 'items'
+  });
+};
 
 module.exports = Order;

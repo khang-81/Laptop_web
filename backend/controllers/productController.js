@@ -17,6 +17,22 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+// Get featured products (đảm bảo phương thức này tồn tại)
+exports.getFeaturedProducts = async (req, res) => {
+  try {
+    const products = await Product.findAll({
+      where: { featured: true }, // Giả sử có trường 'featured'
+      include: [{
+        model: Category,
+        as: 'category'
+      }]
+    });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Get product by ID
 exports.getProductById = async (req, res) => {
   try {
@@ -30,6 +46,23 @@ exports.getProductById = async (req, res) => {
       return res.status(404).json({ message: 'Product not found' });
     }
     res.json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Get products by category
+exports.getProductsByCategory = async (req, res) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const products = await Product.findAll({
+      where: { categoryId },
+      include: [{
+        model: Category,
+        as: 'category'
+      }]
+    });
+    res.json(products);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

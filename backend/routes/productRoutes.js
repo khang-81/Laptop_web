@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/productController');
+const productController = require('../controllers/productController'); // Kiểm tra import đúng
 const authMiddleware = require('../middlewares/authMiddleware');
 
 // Public routes
-router.get('/', productController.getAllProducts);
-router.get('/featured', productController.getFeaturedProducts);
-router.get('/search', productController.searchProducts);
-router.get('/:id', productController.getProductById);
-router.get('/category/:categoryId', productController.getProductsByCategory);
+router.get('/', productController.getAllProducts);  // Kiểm tra callback function tồn tại trong controller
+router.get('/featured', productController.getFeaturedProducts);  // Kiểm tra callback function tồn tại trong controller
+router.get('/search', productController.searchProducts);  // Kiểm tra callback function tồn tại trong controller
+router.get('/:id', productController.getProductById);  // Kiểm tra callback function tồn tại trong controller
+router.get('/category/:categoryId', productController.getProductsByCategory);  // Kiểm tra callback function tồn tại trong controller
 
 // Protected routes (Admin only)
 router.post('/', authMiddleware.authenticate, authMiddleware.adminOnly, productController.createProduct);

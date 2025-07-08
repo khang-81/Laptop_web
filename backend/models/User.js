@@ -1,3 +1,4 @@
+// backend/models/User.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
@@ -22,17 +23,16 @@ const User = sequelize.define('User', {
     allowNull: false
   },
   full_name: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: true
   },
   phone: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(20),
+    allowNull: true
   },
   address: {
-    type: DataTypes.STRING(255)
-  },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+    type: DataTypes.STRING(255),
+    allowNull: true
   },
   role: {
     type: DataTypes.ENUM('user', 'admin'),
@@ -40,7 +40,9 @@ const User = sequelize.define('User', {
   }
 }, {
   tableName: 'users',
-  timestamps: false
+  timestamps: true,  // Sequelize sẽ tự động tạo và quản lý createdAt và updatedAt
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',  // Đảm bảo sử dụng đúng tên cột
 });
 
 module.exports = User;
