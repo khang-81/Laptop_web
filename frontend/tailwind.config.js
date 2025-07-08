@@ -1,10 +1,14 @@
 module.exports = {
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",  // Điều chỉnh cho các file mà bạn muốn sử dụng Tailwind CSS
-    "./public/index.html",
+    "./src/**/*.{html,js,jsx,ts,tsx}",  // Quét tất cả các tệp trong thư mục src
+    "./public/index.html", // Quét tệp index.html trong thư mục public
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'legion-red': '#E2231A', // Màu đỏ của Lenovo Legion
+      },
+    },
   },
   plugins: [],
 };

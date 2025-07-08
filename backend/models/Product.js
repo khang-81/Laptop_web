@@ -23,12 +23,17 @@ const Product = sequelize.define('Product', {
     defaultValue: 0
   },
   image_url: {
-    type: DataTypes.STRING(500)
+  type: DataTypes.TEXT
   },
   created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
-  }
+  },
+  featured: {  
+      type: DataTypes.TINYINT(1),
+      defaultValue: 0,
+      allowNull: false
+    },
 }, {
   tableName: 'products',
   timestamps: false

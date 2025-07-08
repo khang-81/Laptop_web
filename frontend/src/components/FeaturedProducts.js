@@ -80,7 +80,7 @@ export default function FeaturedProducts() {
                 </Link>
                 <div className="px-4 pb-4">
                   <button onClick={() => handleAddToCart(prod)} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">
-                    Thêm vào giỏ
+                    Xem chi tiết
                   </button>
                 </div>
               </div>

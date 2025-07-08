@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: '/',  // Sử dụng proxy nếu đã cấu hình trong `package.json`
 });
 
-// Dịch vụ gọi API cho các danh mục và sản phẩm nổi bật
+// Dịch vụ gọi API cho các danh mục, sản phẩm nổi bật và tin tức
 const productService = {
   getCategories: async () => {
     try {
@@ -42,6 +42,22 @@ const productService = {
       } else {
         // Lỗi xảy ra trong quá trình setup yêu cầu
         throw new Error('Lỗi khi thiết lập yêu cầu API');
+      }
+    }
+  },
+
+  getNews: async () => {
+    try {
+      const response = await api.get('/news');
+      return response.data;  // Trả về dữ liệu tin tức từ API
+    } catch (error) {
+      // Xử lý lỗi tương tự các hàm khác
+      if (error.response) {
+        throw new Error(`Error ${error.response.status}: ${error.response.data.message || 'Lỗi tải tin tức'}`);
+      } else if (error.request) {
+        throw new Error('Không nhận được phản hồi từ server khi tải tin tức');
+      } else {
+        throw new Error('Lỗi khi thiết lập yêu cầu API tin tức');
       }
     }
   },

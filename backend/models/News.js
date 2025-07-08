@@ -23,7 +23,11 @@ const News = sequelize.define('News', {
   views: {
     type: DataTypes.INTEGER,
     defaultValue: 0
-  }
+  },
+  image_url: {
+  type: DataTypes.TEXT
+}
+
 }, {
   tableName: 'news',  // Đảm bảo tên bảng đúng
   timestamps: false  // Không tạo cột createdAt và updatedAt

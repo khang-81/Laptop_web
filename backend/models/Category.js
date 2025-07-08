@@ -17,7 +17,11 @@ const Category = sequelize.define('Category', {
   created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
+  },
+  image_url: {
+  type: DataTypes.TEXT
   }
+
 }, {
   tableName: 'categories',
   timestamps: false

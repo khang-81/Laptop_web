@@ -14,33 +14,24 @@ DROP TABLE IF EXISTS categories;
 
 -- 1. Bảng categories
 CREATE TABLE categories (
-  category_id INT AUTO_INCREMENT PRIMARY KEY,
-  category_name VARCHAR(255) NOT NULL,
-  description VARCHAR(500),
-  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+  category_id INT AUTO_INCREMENT PRIMARY KEY,  -- Tự động tăng cho ID
+  category_name VARCHAR(255) NOT NULL,  -- Tên danh mục
+  description VARCHAR(500),  -- Mô tả danh mục
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Thời gian tạo, mặc định là thời gian hiện tại
+  image_url TEXT  -- Đường dẫn hình ảnh (dạng TEXT để chứa URL dài)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO categories (category_name, description) VALUES
-('Máy tính xách tay', 'Các sản phẩm máy tính xách tay đa dạng, từ cơ bản đến cao cấp'),
-('Laptop Gaming - Đồ Họa', 'Laptop chuyên dụng cho game thủ và đồ họa'),
-('Laptop Văn phòng', 'Laptop cho công việc văn phòng'),
-('Laptop Lập trình', 'Laptop dành cho lập trình viên'),
-('Laptop cao cấp', 'Laptop cao cấp với cấu hình mạnh mẽ và thiết kế tinh tế'),
-('Apple Macbook', 'Sản phẩm Macbook của Apple'),
-('RAM - SSD', 'Lưu trữ RAM và SSD cho máy tính'),
-('Máy tính để bàn', 'Các loại máy tính để bàn cho công việc, chơi game'),
-('Laptop 2 trong 1', 'Laptop có thể biến thành máy tính bảng'),
-('Máy tính học sinh', 'Laptop học sinh với cấu hình vừa phải và giá thành hợp lý'),
-('Laptop doanh nhân', 'Máy tính xách tay dành cho doanh nhân với thiết kế sang trọng'),
-('Laptop màn hình lớn', 'Laptop với màn hình lớn để phục vụ công việc đa nhiệm'),
-('Laptop siêu mỏng', 'Laptop mỏng nhẹ, dễ mang theo'),
-('Laptop gaming cao cấp', 'Laptop dành cho game thủ với cấu hình mạnh mẽ'),
-('Máy tính chơi game', 'Các loại máy tính để chơi game với hiệu suất cao'),
-('Macbook Pro', 'Macbook Pro với thiết kế và hiệu suất mạnh mẽ'),
-('Laptop đồ họa', 'Laptop với cấu hình đồ họa mạnh mẽ, phục vụ cho thiết kế và dựng phim'),
-('Laptop đa năng', 'Laptop có thể sử dụng cho nhiều mục đích khác nhau'),
-('Laptop giá rẻ', 'Các dòng laptop giá rẻ, phù hợp với sinh viên và học sinh'),
-('Máy tính All-in-one', 'Máy tính để bàn với thiết kế tích hợp tất cả trong một');
+INSERT INTO categories (category_name, description, image_url) VALUES
+('Macbook', 'Laptop của Apple nổi bật với cấu hình mạnh mẽ và thiết kế đẹp', '/images/macbook_icon.png'),
+('Dell', 'Laptop của Dell với các dòng máy phù hợp cho công việc học tập và giải trí', '/images/dell_icon.png'),
+('HP', 'Laptop của HP được thiết kế với tính năng bền bỉ và hiệu suất ổn định', '/images/hp_icon.png'),
+('Lenovo', 'Lenovo cung cấp các dòng laptop với cấu hình đa dạng và thiết kế tinh tế', '/images/lenovo_icon.png'),
+('Acer', 'Acer nổi bật với các dòng laptop giá rẻ và cấu hình tốt cho sinh viên', '/images/acer_icon.png'),
+('MSI', 'MSI chuyên cung cấp các laptop gaming với cấu hình mạnh mẽ', '/images/msi_icon.png'),
+('Apple', 'Macbook của Apple là lựa chọn tuyệt vời cho công việc sáng tạo', '/images/apple_icon.png'),
+('Razer', 'Razer cung cấp các laptop gaming cao cấp với hiệu suất mạnh mẽ', '/images/razer_icon.png'),
+('Gigabyte', 'Gigabyte chuyên sản xuất các laptop gaming với cấu hình cao', '/images/gigabyte_icon.png'),
+('Asus', 'Laptop của Asus nổi bật với thiết kế đẹp và hiệu suất mạnh mẽ', '/images/asus_icon.png');
 
 -- 2. Bảng users
 CREATE TABLE users (
