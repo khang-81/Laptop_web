@@ -3,8 +3,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const routes = require('./routes');
-const { sequelize } = require('./models');  // Load Sequelize with associations
+const authRoutes = require('./routes/authRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const productRoutes = require('./routes/productRoutes');
+const newsRoutes = require('./routes/newsRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const { sequelize } = require('./models');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
@@ -24,7 +29,12 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // API routes
-app.use('/api', routes);
+app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/news', newsRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/carts', cartRoutes);
 
 // Error handling
 app.use(errorMiddleware.notFound);
@@ -35,10 +45,8 @@ async function startServer() {
   try {
     await sequelize.authenticate();
     console.log('Database connected');
-
     await sequelize.sync({ alter: true });
     console.log('Models synced');
-
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
   } catch (err) {
