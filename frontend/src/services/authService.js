@@ -1,41 +1,42 @@
+// src/services/authService.js
 import axios from 'axios';
+import { setAuthToken } from '../utils/auth';
 
-const API_URL = 'http://localhost:5000/api/auth';
+const api = axios.create({
+  baseURL: '/auth'
+});
 
 const authService = {
-  register: async (userData) => {
-    const response = await axios.post(`${API_URL}/register`, userData);
-    return response.data;
-  },
-  
   login: async (credentials) => {
-    const response = await axios.post(`${API_URL}/login`, credentials);
+    const response = await api.post('/login', credentials);
+    const { token } = response.data;
+    localStorage.setItem('token', token);
+    setAuthToken(token);
     return response.data;
   },
-  
-  getProfile: async (token) => {
-    const response = await axios.get(`${API_URL}/me`, {
-      headers: {
-        'x-auth-token': token
-      }
-    });
+
+  register: async (userData) => {
+    const response = await api.post('/register', userData);
     return response.data;
   },
-  
-  updateProfile: async (userData, token) => {
-    const response = await axios.put(`${API_URL}/profile`, userData, {
-      headers: {
-        'x-auth-token': token
-      }
-    });
+
+  logout: () => {
+    localStorage.removeItem('token');
+    setAuthToken(null);
+  },
+
+  getCurrentUser: async () => {
+    const response = await api.get('/me');
     return response.data;
   },
-  
-  changePassword: async (passwords, token) => {
-    const response = await axios.put(`${API_URL}/password`, passwords, {
-      headers: {
-        'x-auth-token': token
-      }
+
+
+
+  // Thêm hàm đổi mật khẩu
+  changePassword: async (currentPassword, newPassword) => {
+    const response = await api.put('/password', {
+      currentPassword,
+      newPassword
     });
     return response.data;
   }

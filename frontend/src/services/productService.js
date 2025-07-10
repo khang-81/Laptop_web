@@ -45,6 +45,25 @@ const productService = {
       }
     }
   },
+  getProductsByCategory: async (categoryId, filters = {}) => {
+    try {
+      const params = {
+        category_id: categoryId,
+        ...filters
+      };
+      const response = await api.get('/products', { params });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching products by category:', error);
+      throw error;
+    }
+  },
+
+  getProductById: async (id) => {
+    const response = await api.get(`/${id}`);
+    return response.data;
+  },
+
 
   getNews: async () => {
     try {

@@ -6,13 +6,15 @@ import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Profile from './pages/Profile';
+import 'react-toastify/dist/ReactToastify.css';
+import ProductListPage from './pages/ProductListPage';
+import Profile from './pages/ProfilePage';
 import { CartProvider } from './context/CartContext';
 import Introduce from './pages/Introduce';
 import Promotions from './pages/Promotions';
 import News from './pages/News';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 function App() {
   return (
     <CartProvider>
@@ -25,12 +27,13 @@ function App() {
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/introduce" element={<Introduce />} />
               <Route path="/promotions" element={<Promotions />} />
               <Route path="/news" element={<News />} />
+              <Route path="/category/:categoryId" element={<ProductListPage />} />
             </Routes>
           </main>
           <Footer />

@@ -14,5 +14,5 @@ router.get('/category/:categoryId', productController.getProductsByCategory);
 router.post('/', authMiddleware.authenticate, authMiddleware.adminOnly, productController.createProduct);
 router.put('/:id', authMiddleware.authenticate, authMiddleware.adminOnly, productController.updateProduct);
 router.delete('/:id', authMiddleware.authenticate, authMiddleware.adminOnly, productController.deleteProduct);
-
+router.get('/search', productController.searchProducts);
 module.exports = router;
